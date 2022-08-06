@@ -2,7 +2,7 @@
 
 ## Apply command
 ```
-terraform apply -target module.network
+.\terraform.exe apply -target module.network
 ```
 
 ## Reference

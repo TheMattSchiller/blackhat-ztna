@@ -2,7 +2,7 @@
 
 ## Apply command
 ```
-terraform apply -target module.worker
+.\terraform.exe apply -target module.worker
 ```
 
 ## Reference
