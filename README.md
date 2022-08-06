@@ -1,5 +1,5 @@
-# Boundary Deployment Example on AWS
-This directory contains an AWS deployment example for Boundary using Terraform. The `aws/aws/` directory contains an example AWS reference architecture codified in Terraform and will deploy infrastructure consisting of 2 controllers, 1 worker, and 1 target. The `aws/boundary/` directory contains an example Terraform configuration for setting up and configuring Boundary resources using the [Boundary Terraform Provider](https://github.com/hashicorp/terraform-provider-boundary).
+# The Technical Building Blocks of Zero Trust
+This project contains workshop modules for the 2022 Black Hat Workshop "The Technical Building Blocks of Zero Trust"
 
 ## Requirements
 - [Terraform](https://www.terraform.io/downloads)
@@ -16,6 +16,8 @@ To deploy this example:
 
 If you want to change your AWS region, navigate to `aws/aws/net.tf` and change `region = <new-region>`
 Ensure that AWS is configured for this same region
+
+
     ```
     export AWS_ACCESS_KEY_ID="MY ACCESS KEY"
     export AWS_SECRET_ACCESS_KEY="MY SECRET KEY"
