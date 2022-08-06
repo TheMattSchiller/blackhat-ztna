@@ -2,7 +2,7 @@
 
 ## Apply command
 ```
-.\terraform.exe apply -target module.controller
+./terraform.exe apply -target module.controller
 ```
 
 ## Reference
