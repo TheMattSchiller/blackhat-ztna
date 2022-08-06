@@ -44,6 +44,13 @@ resource "aws_instance" "controller" {
 
   provisioner "remote-exec" {
     inline = [
+      "unzip boundary.zip",
+      "mv boundary /tmp/boundary",
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
       "sudo mv /tmp/boundary /usr/local/bin/boundary",
       "sudo chmod 0755 /usr/local/bin/boundary",
     ]
