@@ -82,7 +82,7 @@ resource "aws_instance" "controller" {
   provisioner "remote-exec" {
     inline = [
       "sudo chmod 0755 /home/ubuntu/install.sh",
-      "sudo sh /home/ubuntu/install.sh controller"
+      "sudo bash /home/ubuntu/install.sh controller"
     ]
   }
 
