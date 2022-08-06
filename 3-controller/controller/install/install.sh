@@ -16,6 +16,7 @@ CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
 
 [Install]
 WantedBy=multi-user.target
+
 EOF
 
 # Add the boundary system user and group to ensure we have a no-login
