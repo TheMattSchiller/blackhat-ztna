@@ -5,6 +5,7 @@ This project contains workshop modules for the 2022 Black Hat Workshop "The Tech
 - [Terraform](https://www.terraform.io/downloads)
 - [Boundary Desktop Client](https://www.boundaryproject.io/downloads)
 - [AWS Account](https://aws.amazon.com/free/)
+- [Git](https://git-scm.com/download/win)
 
 ## Setup
 1. Install Terraform
@@ -19,8 +20,8 @@ Ensure that AWS is configured for this same region
 
 
     ```
-    export AWS_ACCESS_KEY_ID="MY ACCESS KEY"
-    export AWS_SECRET_ACCESS_KEY="MY SECRET KEY"
+    export AWS_ACCESS_KEY_ID="AKIA2KMZODAMASUQTC7B"
+    export AWS_SECRET_ACCESS_KEY="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"
     export AWS_REGION="us-west-2"
     ```
    
