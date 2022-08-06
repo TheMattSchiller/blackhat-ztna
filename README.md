@@ -11,6 +11,11 @@ This project contains workshop modules for the 2022 Black Hat Workshop "The Tech
 1. Install Terraform
 2. Install Boundary Desktop
 3. Sign up for AWS
+4. Generate an ssh key and note the path
+
+
+## Read Me
+https://www.boundaryproject.io/docs/concepts/security/connections-tls
 
 ## Deploy
 To deploy this example:
