@@ -37,8 +37,6 @@ resource "aws_instance" "controller" {
     inline = [
       "sudo apt-get update -y && sudo apt install -y zip unzip",
       "curl -L https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_linux_amd64.zip --output boundary.zip",
-      "unzip boundary.zip",
-      "mv boundary /tmp/boundary",
     ]
   }
 
