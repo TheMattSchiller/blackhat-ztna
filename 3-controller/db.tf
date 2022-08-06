@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "allow_any_ingress" {
 }
 
 resource "aws_db_subnet_group" "boundary" {
-  name       = "boundary"
+  name       = "boundary-db"
   subnet_ids = [var.public_subnet, var.public_subnet_b]
 
   tags = {
