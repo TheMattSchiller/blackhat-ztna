@@ -11,7 +11,7 @@ EOT
 resource "boundary_account_password" "standarduser" {
   auth_method_id = var.auth_method
   type           = "password"
-  login_name     = "jeff"
+  login_name     = "standarduser"
   password       = "$uper$ecure"
 }
 
@@ -25,7 +25,7 @@ resource "boundary_user" "standarduser" {
 resource "boundary_account_password" "adminuser" {
   auth_method_id = var.auth_method
   type           = "password"
-  login_name     = "jeff"
+  login_name     = "adminuser"
   password       = "$uper$ecure"
 }
 
