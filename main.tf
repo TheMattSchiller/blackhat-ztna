@@ -80,21 +80,3 @@ module "catalog" {
   org_scope = module.controller_config.project_scope
 }
 
-module "web-target" {
-  source = "./9-web-target"
-  url = module.controller.boundary_lb_url
-  kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.project_scope
-  host_source_ids = [module.web-target.host_id]
-  host_catalog_id = module.catalog.backend_servers
-  target_address = module.target.private_ip
-}
-
-module "ssh-target" {
-  source = "./10-ssh-target"
-  url = module.controller.boundary_lb_url
-  kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.project_scope
-  host_source_ids = [module.web-target.host_id]
-  host_catalog_id = module.catalog.backend_servers
-}
