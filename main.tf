@@ -86,8 +86,6 @@ module "web-target" {
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   org_scope = module.controller_config.project_scope
   host_catalog_id = module.catalog.backend_servers
-  private_key_pem = module.controller.private_key_pem
-  cert_pem = module.controller.cert_pem
   priv_ssh_key_path = local.priv_ssh_key_path
   pub_ssh_key_path  = local.pub_ssh_key_path
   private_subnet    = module.network.private_subnet_id
