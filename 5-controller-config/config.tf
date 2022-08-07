@@ -31,4 +31,6 @@ resource "boundary_scope" "project" {
   scope_id    = boundary_scope.org.id
   name        = "project"
   description = "Project scope"
+  auto_create_admin_role   = true
+  auto_create_default_role = true
 }
