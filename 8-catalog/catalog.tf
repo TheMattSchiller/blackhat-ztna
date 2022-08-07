@@ -8,9 +8,8 @@ kms "awskms" {
 EOT
 }
 
-resource "boundary_host_catalog" "backend_servers" {
+resource "boundary_host_catalog_static" "backend_servers" {
   name        = "backend_servers"
-  description = "Web servers for backend team"
-  type        = "static"
+  description = "backend servers"
   scope_id    = var.org_scope
 }
