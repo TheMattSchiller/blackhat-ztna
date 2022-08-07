@@ -18,14 +18,14 @@ resource "boundary_host_static" "target_web" {
   address         = aws_instance.web.private_ip
 }
 
-resource "boundary_target" "target_web" {
+resource "boundary_target" "web-target" {
   type                     = "tcp"
-  name                     = "target_web"
+  name                     = "web"
   description              = "target website"
   scope_id                 = var.org_scope
   session_connection_limit = -1
   default_port             = 80
-  host_source_ids = [boundary_host_static.target_web.id]
+  host_source_ids = [boundary_host_set_static.target_web.id]
 }
 
 resource "boundary_host_set_static" "target_web" {
