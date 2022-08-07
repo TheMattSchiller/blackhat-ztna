@@ -19,7 +19,7 @@ resource "boundary_user" "standarduser" {
   name        = "standarduser"
   description = "user with typical permissions"
   account_ids = [boundary_account_password.standarduser.id]
-  scope_id    = var.scope_id
+  scope_id    = var.org_scope
 }
 
 resource "boundary_account_password" "adminuser" {
@@ -33,5 +33,5 @@ resource "boundary_user" "adminuser" {
   name        = "adminuser"
   description = "user with typical permissions"
   account_ids = [boundary_account_password.adminuser.id]
-  scope_id    = var.scope_id
+  scope_id    = var.org_scope
 }

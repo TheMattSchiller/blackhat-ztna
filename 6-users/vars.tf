@@ -10,7 +10,7 @@ variable "kms_recovery_key_id" {
   default = ""
 }
 
-variable "scope_id" {
+variable "org_scope" {
   default = ""
 }
 
