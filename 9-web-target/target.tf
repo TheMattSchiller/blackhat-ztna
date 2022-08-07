@@ -16,7 +16,7 @@ resource "boundary_host_static" "target" {
 
 resource "boundary_target" "backend_servers_website" {
   type                     = "tcp"
-  name                     = "target web"
+  name                     = "target_web"
   description              = "target website"
   scope_id                 = var.org_scope
   session_connection_limit = -1
