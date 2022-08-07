@@ -12,8 +12,8 @@ kms "awskms" {
 EOT
 }
 
-resource "boundary_host_static" "target" {
-  name            = "target"
+resource "boundary_host_static" "target_web" {
+  name            = "target_web"
   host_catalog_id = var.host_catalog_id
   address         = aws_instance.web.private_ip
 }
@@ -25,7 +25,7 @@ resource "boundary_target" "target_web" {
   scope_id                 = var.org_scope
   session_connection_limit = -1
   default_port             = 80
-  host_source_ids = [boundary_host_static.target.id]
+  host_source_ids = [boundary_host_static.target_web.id]
 }
 
 resource "boundary_host_set_static" "target_web" {
@@ -33,7 +33,7 @@ resource "boundary_host_set_static" "target_web" {
   host_catalog_id = var.host_catalog_id
 
   host_ids = [
-    boundary_host_static.target.id,
+    boundary_host_static.target_web.id,
   ]
 }
 
