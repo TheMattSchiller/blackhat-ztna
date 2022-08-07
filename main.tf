@@ -91,6 +91,7 @@ module "web-target" {
   private_subnet    = module.network.private_subnet_id
   ami               = data.aws_ami.ubuntu.id
   ssh_key_name      = aws_key_pair.boundary.key_name
+  vpc_security_group = module.worker.security_group
 }
 
 module "ssh-target" {
