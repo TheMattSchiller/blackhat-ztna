@@ -42,7 +42,7 @@ resource "boundary_role" "org_admin" {
   grant_strings = [
     "id=*;type=*;actions=*"
   ]
-  principal_ids = [var.adminuser]
+  principal_ids = var.adminuser
 }
 
 # Adds an org-level role granting administrative permissions within the core_infra project
@@ -54,5 +54,5 @@ resource "boundary_role" "standarduser" {
   grant_strings = [
     "id=*;type=*;actions=*"
   ]
-  principal_ids = [var.standarduser]
+  principal_ids = var.standarduser
 }
