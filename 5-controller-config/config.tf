@@ -26,3 +26,9 @@ resource "boundary_scope" "org" {
   name        = var.organization
   description = "Organization scope"
 }
+
+resource "boundary_scope" "project" {
+  scope_id    = boundary_scope.org.id
+  name        = "project"
+  description = "Project scope"
+}

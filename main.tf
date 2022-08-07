@@ -77,7 +77,7 @@ module "catalog" {
   source = "./8-catalog"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.org_scope
+  org_scope = module.controller_config.project_scope
 }
 
 module "web-target" {
