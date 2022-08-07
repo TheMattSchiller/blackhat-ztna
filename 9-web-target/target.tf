@@ -65,8 +65,7 @@ resource "aws_instance" "web" {
       "INSTANCE_ID=\"web\"",
       "export PRIVATE_IP=\"$(hostname -i | awk '{print $1}')\"",
       "sleep 10",
-      "sudo docker run -e INSTANCE_ID=$INSTANCE_ID -e PRIVATE_IP=$PRIVATE_IP -p 80:80 gcr.io/banyan-pub/demo-site",
-      "sleep 10 && sudo docker logs connector"
+      "sudo docker run -e INSTANCE_ID=$INSTANCE_ID -e PRIVATE_IP=$PRIVATE_IP -p 80:80 gcr.io/banyan-pub/demo-site"
     ]
   }
 
