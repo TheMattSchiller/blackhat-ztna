@@ -86,7 +86,12 @@ module "web-target" {
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   org_scope = module.controller_config.project_scope
   host_catalog_id = module.catalog.backend_servers
-  target_address = module.target.private_ip
+  priv_ssh_key_path = local.priv_ssh_key_path
+  pub_ssh_key_path  = local.pub_ssh_key_path
+  private_subnet    = module.network.private_subnet_id
+  vpc_id            = module.network.vpc_id
+  ami               = data.aws_ami.ubuntu.id
+  ssh_key_name      = aws_key_pair.boundary.key_name
 }
 
 module "ssh-target" {
