@@ -22,5 +22,5 @@ resource "boundary_target" "backend_servers_website" {
   scope_id                 = var.org_scope
   session_connection_limit = -1
   default_port             = 80
-  host_source_ids = [boundary_host.target]
+  host_source_ids = [boundary_host.target.id]
 }

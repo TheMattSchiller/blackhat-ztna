@@ -51,7 +51,7 @@ resource "boundary_role" "org_admin" {
 resource "boundary_role" "org_readonly" {
   name        = "readonly"
   description = "Read-only role"
-  principal_ids = var.leadership
+  principal_ids = var.backend_users
   grant_strings = [
     "id=*;type=*;actions=read"
   ]
