@@ -31,7 +31,7 @@ resource "boundary_account" "backend_user_acct" {
   type           = "password"
   login_name     = lower(each.key)
   password       = "foofoofoo"
-  auth_method_id = var.auth_metod
+  auth_method_id = var.auth_method
 }
 
 resource "boundary_account" "frontend_user_acct" {
@@ -45,7 +45,7 @@ resource "boundary_account" "frontend_user_acct" {
 
 resource "boundary_account_password" "backend" {
   for_each       = var.backend_team
-  auth_method_id = var.auth_metod
+  auth_method_id = var.auth_method
   type           = "password"
   login_name     = each.key
   password       = "foofoofoo"

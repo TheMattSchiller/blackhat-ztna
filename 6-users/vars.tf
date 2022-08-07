@@ -14,7 +14,7 @@ variable "scope_id" {
   default = ""
 }
 
-variable "auth_metod" {
+variable "auth_method" {
   default = ""
 }
 

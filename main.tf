@@ -58,6 +58,7 @@ module "users" {
   source = "./6-users"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
+  auth_method = module.controller_config.auth_method
   organization = "blackhat"
 }
 
