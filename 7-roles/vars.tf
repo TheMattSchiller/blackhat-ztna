@@ -21,3 +21,7 @@ variable "standarduser" {
 variable "adminuser" {
   default = ""
 }
+
+variable "project_scope" {
+  default = ""
+}

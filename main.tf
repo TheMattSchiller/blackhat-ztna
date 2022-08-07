@@ -72,6 +72,7 @@ module "roles" {
   org_scope = module.controller_config.org_scope
   standarduser = module.users.standarduser
   adminuser = module.users.adminuser
+  project_scope = module.controller_config.project_scope
 }
 
 module "catalog" {
