@@ -87,6 +87,7 @@ module "web-target" {
   org_scope = module.controller_config.project_scope
   host_source_ids = [module.web-target.host_id]
   host_catalog_id = module.catalog.backend_servers
+  target_address = module.target.private_ip
 }
 
 module "ssh-target" {
