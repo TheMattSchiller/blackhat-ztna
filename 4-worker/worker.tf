@@ -27,9 +27,18 @@ resource "aws_instance" "worker-1" {
     ]
   }
 
-  provisioner "file" {
-    source      = "${path.module}/worker/install/boundary"
-    destination = "/tmp/boundary"
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt update -y && sudo apt update -y && sudo apt install -y unzip",
+      "curl -L https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_linux_amd64.zip --output boundary.zip",
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "unzip boundary.zip",
+      "mv boundary /tmp/boundary",
+    ]
   }
 
   provisioner "remote-exec" {
