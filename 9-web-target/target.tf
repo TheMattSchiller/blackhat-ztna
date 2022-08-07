@@ -14,7 +14,7 @@ resource "boundary_host_static" "target" {
   address         = var.target_address
 }
 
-resource "boundary_target" "backend_servers_website" {
+resource "boundary_target" "target_web" {
   type                     = "tcp"
   name                     = "target_web"
   description              = "target website"

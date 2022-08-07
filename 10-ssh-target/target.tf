@@ -19,7 +19,7 @@ resource "boundary_target" "target_ssh" {
 }
 
 resource "boundary_host_set_static" "target_ssh" {
-  name            = "foo"
+  name            = "target_ssh"
   host_catalog_id = var.host_catalog_id
 
   host_ids = [
