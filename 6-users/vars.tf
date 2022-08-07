@@ -17,20 +17,3 @@ variable "scope_id" {
 variable "auth_method" {
   default = ""
 }
-
-variable "backend_team" {
-  type = set(string)
-  default = [
-    "jim",
-    "mike",
-    "todd",
-  ]
-}
-
-variable "frontend_team" {
-  type = set(string)
-  default = [
-    "randy",
-    "susmitha",
-  ]
-}

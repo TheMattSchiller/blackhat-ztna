@@ -1,6 +1,7 @@
+output "standarduser" {
+  value = boundary_user.standarduser.account_ids
+}
 
-output "backend_users" {
-  value = [
-  for a in boundary_user.backend : a.account_ids
-  ]
+output "adminuser" {
+  value = boundary_user.adminuser.account_ids
 }

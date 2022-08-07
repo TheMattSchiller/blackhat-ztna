@@ -14,10 +14,10 @@ variable "org_scope" {
   default = ""
 }
 
-variable "leadership" {
+variable "standarduser" {
   default = ""
 }
 
-variable "backend_users" {
-  default = []
+variable "adminuser" {
+  default = ""
 }

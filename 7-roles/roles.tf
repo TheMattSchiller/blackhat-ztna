@@ -42,31 +42,17 @@ resource "boundary_role" "org_admin" {
   grant_strings = [
     "id=*;type=*;actions=*"
   ]
-  principal_ids = var.backend_users
-}
-
-# Adds a read-only role in the global scope granting read-only access
-# to all resources within the org scope and adds principals from the 
-# leadership team to the role
-resource "boundary_role" "org_readonly" {
-  name        = "readonly"
-  description = "Read-only role"
-  principal_ids = var.backend_users
-  grant_strings = [
-    "id=*;type=*;actions=read"
-  ]
-  scope_id       = var.global_scope
-  grant_scope_id = var.org_scope
+  principal_ids = var.adminuser
 }
 
 # Adds an org-level role granting administrative permissions within the core_infra project
-resource "boundary_role" "backend_users" {
-  name           = "backend_users"
-  description    = "Administrator role for core infra"
+resource "boundary_role" "standarduser" {
+  name           = "standarduser"
+  description    = "A standard role for a typical user"
   scope_id       = var.org_scope
   grant_scope_id = var.org_scope
   grant_strings = [
     "id=*;type=*;actions=*"
   ]
-  principal_ids = var.backend_users
+  principal_ids = var.standarduser
 }
