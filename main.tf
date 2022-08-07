@@ -103,5 +103,5 @@ module "ssh-target" {
   org_scope = module.controller_config.project_scope
   host_source_ids = [module.web-target.host_id]
   host_catalog_id = module.catalog.backend_servers
-  target_host_id = module.web-target.host_id
+  target_address = module.target.private_ip
 }

@@ -8,9 +8,9 @@ kms "awskms" {
 EOT
 }
 
-resource "boundary_target" "target_ssh" {
+resource "boundary_target" "ssh-target" {
   type                     = "tcp"
-  name                     = "target_ssh"
+  name                     = "ssh"
   description              = "Backend SSH target"
   scope_id                 = var.org_scope
   session_connection_limit = -1
@@ -25,4 +25,10 @@ resource "boundary_host_set_static" "target_ssh" {
   host_ids = [
     var.target_host_id,
   ]
+}
+
+resource "boundary_host_static" "target_web" {
+  name            = "target_web"
+  host_catalog_id = var.host_catalog_id
+  address         = var.target_address
 }

@@ -21,3 +21,7 @@ variable "host_catalog_id" {
 variable "target_host_id" {
   default = ""
 }
+
+variable "target_address" {
+  default = ""
+}
