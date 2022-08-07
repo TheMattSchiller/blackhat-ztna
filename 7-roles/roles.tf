@@ -46,3 +46,14 @@ resource "boundary_role" "standarduser" {
   ]
   principal_ids = [var.standarduser]
 }
+
+resource "boundary_role" "adminuser" {
+  name           = "adminuser"
+  description    = "A admin role for a typical user"
+  scope_id       = var.org_scope
+  grant_scope_id = var.project_scope
+  grant_strings = [
+    "id=*;type=*;actions=*"
+  ]
+  principal_ids = [var.adminuser]
+}

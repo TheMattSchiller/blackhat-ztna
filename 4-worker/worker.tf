@@ -137,3 +137,12 @@ resource "aws_security_group_rule" "allow_egress_worker" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.worker.id
 }
+
+resource "aws_security_group_rule" "allow_all_workers" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "tcp"
+  self = true
+  security_group_id = aws_security_group.worker.id
+}
