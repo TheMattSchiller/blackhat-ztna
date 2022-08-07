@@ -15,7 +15,7 @@ resource "boundary_target" "target_ssh" {
   scope_id                 = var.org_scope
   session_connection_limit = -1
   default_port             = 22
-  host_source_ids = var.host_source_ids
+  host_source_ids = []
 }
 
 resource "boundary_host_set_static" "target_ssh" {
