@@ -17,3 +17,7 @@ variable "kms_recovery_key_id" {
 variable "host_catalog_id" {
   default = ""
 }
+
+variable "target_host_id" {
+  default = ""
+}

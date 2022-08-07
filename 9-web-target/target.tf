@@ -23,3 +23,12 @@ resource "boundary_target" "backend_servers_website" {
   default_port             = 80
   host_source_ids = [boundary_host_static.target.id]
 }
+
+resource "boundary_host_set_static" "target_web" {
+  name            = "target_web"
+  host_catalog_id = var.host_catalog_id
+
+  host_ids = [
+    boundary_host_static.target.id,
+  ]
+}
