@@ -52,21 +52,4 @@ resource "aws_instance" "web" {
     host         = self.private_ip
     bastion_host = var.controller_ip
   }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update -y",
-      "sudo apt install -y ca-certificates curl gnupg lsb-release",
-      "sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
-      "sudo echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
-      "sudo apt update -y",
-      "sudo apt install -y docker-ce docker-ce-cli containerd.io ",
-      "sudo systemctl enable docker.service",
-      "sudo systemctl enable containerd.service",
-      "INSTANCE_ID=\"web\"",
-      "export PRIVATE_IP=\"$(hostname -i | awk '{print $1}')\"",
-      "docker run -e INSTANCE_ID=$INSTANCE_ID -e PRIVATE_IP=$PRIVATE_IP -p 80:80 gcr.io/banyan-pub/demo-site",
-      "sleep 10 && sudo docker logs connector"
-    ]
-  }
 }
