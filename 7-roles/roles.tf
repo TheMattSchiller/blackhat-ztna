@@ -1,13 +1,3 @@
-provider "boundary" {
-  addr             = var.url
-  recovery_kms_hcl = <<EOT
-kms "awskms" {
-	purpose    = "recovery"
-        kms_key_id = "${var.kms_recovery_key_id}"
-}
-EOT
-}
-
 # Allows anonymous (un-authenticated) users to list and authenticate against any
 # auth method, list the global scope, and read and change password on their account ID
 # at the global scope
