@@ -1,3 +1,6 @@
+#!/bin/bash
+
+set -ex
 # Installs the boundary as a service for systemd on linux
 TYPE=$1
 NAME=boundary
