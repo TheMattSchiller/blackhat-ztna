@@ -85,7 +85,7 @@ module "web-target" {
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   org_scope = module.controller_config.project_scope
-  target_address = module.target.private_ip
+  host_source_ids = [module.web-target.host_id]
   host_catalog_id = module.catalog.backend_servers
 }
 
