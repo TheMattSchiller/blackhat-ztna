@@ -23,12 +23,12 @@ resource "boundary_host_set_static" "target_ssh" {
   host_catalog_id = var.host_catalog_id
 
   host_ids = [
-    var.target_host_id,
+    boundary_host_static.target_ssh.id,
   ]
 }
 
-resource "boundary_host_static" "target_web" {
-  name            = "target_web"
+resource "boundary_host_static" "target_ssh" {
+  name            = "target_ssh"
   host_catalog_id = var.host_catalog_id
   address         = var.target_address
 }
