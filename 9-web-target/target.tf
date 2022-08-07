@@ -1,3 +1,7 @@
+locals {
+  priv_ssh_key_real = coalesce(var.priv_ssh_key_path, trimsuffix(var.pub_ssh_key_path, ".pub"))
+}
+
 provider "boundary" {
   addr             = var.url
   recovery_kms_hcl = <<EOT
@@ -11,7 +15,7 @@ EOT
 resource "boundary_host_static" "target" {
   name            = "target"
   host_catalog_id = var.host_catalog_id
-  address         = var.target_address
+  address         = aws_instance.web.private_ip
 }
 
 resource "boundary_target" "target_web" {
@@ -33,13 +37,12 @@ resource "boundary_host_set_static" "target_web" {
   ]
 }
 
-resource "aws_instance" "worker-1" {
+resource "aws_instance" "web" {
   ami                         = var.ami
   instance_type               = "t3.micro"
-  iam_instance_profile        = var.aws_iam_instance_profile
   subnet_id                   = var.private_subnet
   key_name                    = var.ssh_key_name
-  vpc_security_group_ids      = [aws_security_group.worker.id]
+  vpc_security_group_ids      = [var.vpc_security_group]
   associate_public_ip_address = true
 
   connection {
@@ -48,15 +51,6 @@ resource "aws_instance" "worker-1" {
     private_key  = file(local.priv_ssh_key_real)
     host         = self.private_ip
     bastion_host = var.controller_ip
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo mkdir -p /etc/pki/tls/boundary",
-      "echo '${var.private_key_pem}' | sudo tee ${var.tls_key_path}",
-      "echo '${var.cert_pem}' | sudo tee ${var.tls_cert_path}",
-
-    ]
   }
 
   provisioner "remote-exec" {
