@@ -86,6 +86,7 @@ module "web-target" {
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   org_scope = module.controller_config.org_scope
   target_address = module.target.private_ip
+  host_catalog_id = module.catalog.backend_servers
 }
 
 module "ssh-target" {
@@ -94,4 +95,5 @@ module "ssh-target" {
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   org_scope = module.controller_config.org_scope
   host_source_ids = [module.web-target.host_id]
+  host_catalog_id = module.catalog.backend_servers
 }
