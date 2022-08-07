@@ -1,13 +1,3 @@
-provider "boundary" {
-  addr             = var.url
-  recovery_kms_hcl = <<EOT
-kms "awskms" {
-	purpose    = "recovery"
-        kms_key_id = "${var.kms_recovery_key_id}"
-}
-EOT
-}
-
 resource "boundary_auth_method" "password" {
   name        = "username_password"
   description = "Usernames and passwords local to boundary"

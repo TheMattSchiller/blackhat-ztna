@@ -1,13 +1,3 @@
-provider "boundary" {
-  addr             = var.url
-  recovery_kms_hcl = <<EOT
-kms "awskms" {
-	purpose    = "recovery"
-        kms_key_id = "${var.kms_recovery_key_id}"
-}
-EOT
-}
-
 resource "boundary_target" "ssh-target" {
   type                     = "tcp"
   name                     = "ssh"

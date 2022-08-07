@@ -24,3 +24,13 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
+
+provider "boundary" {
+  addr             = module.controller.boundary_lb_url
+  recovery_kms_hcl = <<EOT
+kms "awskms" {
+	purpose    = "recovery"
+        kms_key_id = "${module.controller.kms_recovery_key_id}"
+}
+EOT
+}

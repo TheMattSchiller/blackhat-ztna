@@ -2,16 +2,6 @@ locals {
   priv_ssh_key_real = coalesce(var.priv_ssh_key_path, trimsuffix(var.pub_ssh_key_path, ".pub"))
 }
 
-provider "boundary" {
-  addr             = var.url
-  recovery_kms_hcl = <<EOT
-kms "awskms" {
-	purpose    = "recovery"
-        kms_key_id = "${var.kms_recovery_key_id}"
-}
-EOT
-}
-
 resource "boundary_host_static" "target_web" {
   name            = "target_web"
   host_catalog_id = var.host_catalog_id
