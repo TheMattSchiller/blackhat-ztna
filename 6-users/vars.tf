@@ -34,13 +34,3 @@ variable "frontend_team" {
     "susmitha",
   ]
 }
-
-variable "leadership_team" {
-  type = set(string)
-  default = [
-    "jeff",
-    "pete",
-    "jonathan",
-    "malnick"
-  ]
-}
