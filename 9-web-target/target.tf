@@ -43,7 +43,6 @@ resource "aws_instance" "web" {
   subnet_id                   = var.private_subnet
   key_name                    = var.ssh_key_name
   vpc_security_group_ids      = [var.vpc_security_group]
-  associate_public_ip_address = true
 
   connection {
     type         = "ssh"

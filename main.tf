@@ -94,6 +94,7 @@ module "web-target" {
   ami               = data.aws_ami.ubuntu.id
   ssh_key_name      = aws_key_pair.boundary.key_name
   vpc_security_group = module.worker.security_group
+  controller_ip = module.controller.controller_public_ip
 }
 
 module "ssh-target" {
