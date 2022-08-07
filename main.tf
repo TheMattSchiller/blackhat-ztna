@@ -68,6 +68,8 @@ module "roles" {
   kms_recovery_key_id = module.controller.kms_recovery_key_id
   global_scope = module.controller_config.global_scope
   org_scope = module.controller_config.org_scope
+  standarduser = module.users.standarduser
+  adminuser = module.users.adminuser
 }
 
 module "catalog" {
