@@ -13,3 +13,7 @@ variable "key_name" {
 variable "tag" {
   default = ""
 }
+
+variable "vpc_security_group" {
+  default = ""
+}

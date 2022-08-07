@@ -18,6 +18,7 @@ module "target" {
   subnet_id = module.network.private_subnet_id
   key_name  = aws_key_pair.boundary.key_name
   ami       = data.aws_ami.ubuntu.id
+  vpc_security_group = module.worker.security_group
 }
 
 module "controller" {
