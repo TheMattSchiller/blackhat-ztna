@@ -30,7 +30,7 @@ provider "boundary" {
   recovery_kms_hcl = <<EOT
 kms "awskms" {
 	purpose    = "recovery"
-        kms_key_id = "${module.controller.kms_recovery_key_id}"
+    kms_key_id = "${module.controller.kms_recovery_key_id}"
 }
 EOT
 }
