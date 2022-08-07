@@ -69,4 +69,9 @@ resource "aws_instance" "web" {
       "sleep 10 && sudo docker logs connector"
     ]
   }
+
+  tags = {
+    Name = "web-server"
+  }
+
 }
