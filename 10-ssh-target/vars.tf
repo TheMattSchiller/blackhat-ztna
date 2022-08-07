@@ -13,3 +13,7 @@ variable "url" {
 variable "kms_recovery_key_id" {
   default = ""
 }
+
+variable "host_catalog_id" {
+  default = ""
+}
