@@ -10,7 +10,7 @@ EOT
 
 resource "boundary_target" "backend_servers_ssh" {
   type                     = "tcp"
-  name                     = "backend_servers_ssh"
+  name                     = "target ssh"
   description              = "Backend SSH target"
   scope_id                 = var.org_scope
   session_connection_limit = -1
