@@ -59,8 +59,8 @@ module "users" {
   source = "./6-users"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  auth_method = module.controller_config.auth_method
-  org_scope = module.controller_config.org_scope
+  auth_method = module.controller-config.auth_method
+  org_scope = module.controller-config.org_scope
   organization = "blackhat"
 }
 
@@ -68,25 +68,25 @@ module "roles" {
   source = "./7-roles"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  global_scope = module.controller_config.global_scope
-  org_scope = module.controller_config.org_scope
+  global_scope = module.controller-config.global_scope
+  org_scope = module.controller-config.org_scope
   standarduser = module.users.standarduser
   adminuser = module.users.adminuser
-  project_scope = module.controller_config.project_scope
+  project_scope = module.controller-config.project_scope
 }
 
 module "catalog" {
   source = "./8-catalog"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.project_scope
+  org_scope = module.controller-config.project_scope
 }
 
 module "web-target" {
   source = "./9-web-target"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.project_scope
+  org_scope = module.controller-config.project_scope
   host_catalog_id = module.catalog.backend_servers
   priv_ssh_key_path = local.priv_ssh_key_path
   pub_ssh_key_path  = local.pub_ssh_key_path
@@ -101,7 +101,7 @@ module "ssh-target" {
   source = "./10-ssh-target"
   url = module.controller.boundary_lb_url
   kms_recovery_key_id = module.controller.kms_recovery_key_id
-  org_scope = module.controller_config.project_scope
+  org_scope = module.controller-config.project_scope
   host_catalog_id = module.catalog.backend_servers
   target_address = module.target.private_ip
 }
