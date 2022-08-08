@@ -23,15 +23,22 @@ To deploy this example:
 If you want to change your AWS region, navigate to `aws/aws/net.tf` and change `region = <new-region>`
 Ensure that AWS is configured for this same region
 
-
-    ```
-    export AWS_ACCESS_KEY_ID="AKIA2KMZODAMASUQTC7B"
-    export AWS_SECRET_ACCESS_KEY="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"
-    export AWS_REGION="us-west-2"
-    ```
+```
+export AWS_ACCESS_KEY_ID="AKIA2KMZODAMASUQTC7B"
+export AWS_SECRET_ACCESS_KEY="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"
+export AWS_REGION="us-west-2"
+```
    
 Run `terraform init`
 
 Ensure that `vars.tf` points to the correct ssh key paths
 
 Run each terraform apply command for each workshop module
+
+## Windows Line End Fix
+The cotroller will not deploy with DOS style line ends. These commands fix the repo so that the line ends are preserved
+```
+git config core.autocrlf false 
+git rm --cached -r . 
+git reset --hard
+```
