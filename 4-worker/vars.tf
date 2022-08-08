@@ -39,7 +39,7 @@ variable "organization" {
   default = "organization"
 }
 
-variable "private_subnet" {
+variable "public_subnet" {
   default = ""
 }
 

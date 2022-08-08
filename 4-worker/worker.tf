@@ -6,7 +6,7 @@ resource "aws_instance" "worker-1" {
   ami                         = var.ami
   instance_type               = "t3.micro"
   iam_instance_profile        = var.aws_iam_instance_profile
-  subnet_id                   = var.private_subnet
+  subnet_id                   = var.public_subnet
   key_name                    = var.ssh_key_name
   vpc_security_group_ids      = [aws_security_group.worker.id]
   associate_public_ip_address = true
@@ -111,15 +111,6 @@ resource "aws_security_group_rule" "allow_web_worker" {
   security_group_id = aws_security_group.worker.id
 }
 
-resource "aws_security_group_rule" "allow_web2_worker" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.worker.id
-}
-
 resource "aws_security_group_rule" "allow_9202_worker" {
   type              = "ingress"
   from_port         = 9202
@@ -135,14 +126,5 @@ resource "aws_security_group_rule" "allow_egress_worker" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.worker.id
-}
-
-resource "aws_security_group_rule" "allow_all_workers" {
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "tcp"
-  self = true
   security_group_id = aws_security_group.worker.id
 }

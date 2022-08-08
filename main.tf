@@ -34,7 +34,7 @@ module "controller" {
 
 module "worker" {
   source = "./4-worker"
-  private_subnet = module.network.private_subnet_id
+  public_subnet = module.network.public_subnet_id
   aws_iam_instance_profile = module.controller.aws_iam_instance_profile
   private_key_pem = module.controller.private_key_pem
   cert_pem = module.controller.cert_pem
