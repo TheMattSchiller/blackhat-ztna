@@ -4,6 +4,7 @@ This project contains workshop modules for the 2022 Black Hat Workshop "The Tech
 ## Requirements
 - [Terraform](https://www.terraform.io/downloads)
 - [Boundary Desktop Client](https://www.boundaryproject.io/downloads)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 - [AWS Account](https://aws.amazon.com/free/)
 - [Git](https://git-scm.com/download/win)
 
