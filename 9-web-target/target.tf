@@ -10,7 +10,7 @@ resource "boundary_host_static" "target_web" {
 
 resource "boundary_target" "web-target" {
   type                     = "tcp"
-  name                     = "web"
+  name                     = "web-server"
   description              = "target website"
   scope_id                 = var.org_scope
   session_connection_limit = -1
@@ -27,7 +27,6 @@ resource "boundary_target" "ssh-target" {
   default_port             = 22
   host_source_ids = [boundary_host_set_static.target_web.id]
 }
-
 
 resource "boundary_host_set_static" "target_web" {
   name            = "target_web"
@@ -63,10 +62,8 @@ resource "aws_instance" "web" {
       "sudo apt install -y docker-ce docker-ce-cli containerd.io ",
       "sudo systemctl enable docker.service",
       "sudo systemctl enable containerd.service",
-      "INSTANCE_ID=\"web\"",
-      "export PRIVATE_IP=\"$(hostname -i | awk '{print $1}')\"",
       "sleep 10",
-      "sudo docker run -d -e INSTANCE_ID=$INSTANCE_ID -e PRIVATE_IP=$PRIVATE_IP -p 80:80 gcr.io/banyan-pub/demo-site"
+      "sudo docker run -d -p 80:80 public.ecr.aws/pahudnet/nyancat-docker-image:latest"
     ]
   }
 
