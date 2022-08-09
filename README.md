@@ -49,7 +49,6 @@ There is a bit of a chicken and egg gotcha about this repo. Because the terrafor
 
 ### Windows
 ```
-./terraform.exe destroy -auto-approve -target module.rickroll -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.web-target -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.rdp-target -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.catalog -auto-approve && \
@@ -64,7 +63,6 @@ There is a bit of a chicken and egg gotcha about this repo. Because the terrafor
 
 ### Unix
 ```
-terraform destroy -auto-approve -target module.rickroll -auto-approve && \
 terraform destroy -auto-approve -target module.web-target -auto-approve && \
 terraform destroy -auto-approve -target module.rdp-target -auto-approve && \
 terraform destroy -auto-approve -target module.catalog -auto-approve && \
