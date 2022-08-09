@@ -43,3 +43,34 @@ git config core.autocrlf false
 git rm --cached -r . 
 git reset --hard
 ```
+
+## Delete command
+There is a bit of a chicken and egg gotcha about this repo. Because the terraform provider for boundary is pointed to a ELB created in AWS by the same repo, we cannot delete with a standard delete command. This is the proper delete command
+
+### Windows
+```
+./terraform.exe destroy -auto-approve -target module.rickroll -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.web-target -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.catalog -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.roles -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.users -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.controller-config -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.worker -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.controller && \
+./terraform.exe destroy -auto-approve -target module.target && \
+./terraform.exe destroy -auto-approve -target module.network
+```
+
+### Unix
+```
+terraform destroy -auto-approve -target module.rickroll -auto-approve && \
+terraform destroy -auto-approve -target module.web-target -auto-approve && \
+terraform destroy -auto-approve -target module.catalog -auto-approve && \
+terraform destroy -auto-approve -target module.roles -auto-approve && \
+terraform destroy -auto-approve -target module.users -auto-approve && \
+terraform destroy -auto-approve -target module.controller-config -auto-approve && \
+terraform destroy -auto-approve -target module.worker -auto-approve && \
+terraform destroy -auto-approve -target module.controller && \
+terraform destroy -auto-approve -target module.target && \
+terraform destroy -auto-approve -target module.network
+```
