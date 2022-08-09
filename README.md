@@ -51,6 +51,7 @@ There is a bit of a chicken and egg gotcha about this repo. Because the terrafor
 ```
 ./terraform.exe destroy -auto-approve -target module.rickroll -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.web-target -auto-approve && \
+./terraform.exe destroy -auto-approve -target module.rdp-target -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.catalog -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.roles -auto-approve && \
 ./terraform.exe destroy -auto-approve -target module.users -auto-approve && \
@@ -65,6 +66,7 @@ There is a bit of a chicken and egg gotcha about this repo. Because the terrafor
 ```
 terraform destroy -auto-approve -target module.rickroll -auto-approve && \
 terraform destroy -auto-approve -target module.web-target -auto-approve && \
+terraform destroy -auto-approve -target module.rdp-target -auto-approve && \
 terraform destroy -auto-approve -target module.catalog -auto-approve && \
 terraform destroy -auto-approve -target module.roles -auto-approve && \
 terraform destroy -auto-approve -target module.users -auto-approve && \
