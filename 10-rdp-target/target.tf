@@ -23,8 +23,18 @@ resource "boundary_host_set_static" "target_rdp" {
   ]
 }
 
+# Get latest Windows Server 2022 AMI
+data "aws_ami" "windows-2022" {
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["Windows_Server-2022-English-Full-Base*"]
+  }
+}
+
 resource "aws_instance" "rdp" {
-  ami                    = var.ami
+  ami                    = data.aws_ami.windows-2022.id
   instance_type          = "t2.medium"
   subnet_id              = var.private_subnet
   key_name               = var.ssh_key_name
