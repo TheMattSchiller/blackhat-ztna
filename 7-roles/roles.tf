@@ -50,8 +50,8 @@ resource "boundary_role" "standarduser" {
 resource "boundary_role" "adminuser" {
   name           = "adminuser"
   description    = "A admin role for a typical user"
-  scope_id       = var.org_scope
-  grant_scope_id = var.project_scope
+  scope_id       = var.global_scope
+  grant_scope_id = var.global_scope
   grant_strings = [
     "id=*;type=*;actions=*"
   ]
