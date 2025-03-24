@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 
 data "aws_availability_zones" "available" {
@@ -8,7 +8,7 @@ data "aws_availability_zones" "available" {
 
 # VPC resources
 resource "aws_vpc" "main" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc_subnet
   instance_tenancy     = "default"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -22,9 +22,9 @@ resource "aws_internet_gateway" "this" {
 }
 
 # Subnets
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet_a" {
   vpc_id            = aws_vpc.main.id
-  availability_zone = "us-west-2a"
+  availability_zone = var.availability_zone_a
   cidr_block        = var.public_subnet
 
   tags = {
@@ -32,19 +32,9 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
-resource "aws_subnet" "private_subnet" {
-  vpc_id            = aws_vpc.main.id
-  availability_zone = "us-west-2a"
-  cidr_block        = var.private_subnet
-
-  tags = {
-    Name = "private-subnet"
-  }
-}
-
 resource "aws_subnet" "public_subnet_b" {
   vpc_id            = aws_vpc.main.id
-  availability_zone = "us-west-2b"
+  availability_zone =var.availability_zone_b
   cidr_block        = var.public_subnet_b
 
   tags = {
@@ -52,13 +42,23 @@ resource "aws_subnet" "public_subnet_b" {
   }
 }
 
+resource "aws_subnet" "private_subnet" {
+  vpc_id            = aws_vpc.main.id
+  availability_zone = var.availability_zone_a
+  cidr_block        = var.private_subnet
+
+  tags = {
+    Name = "private-subnet"
+  }
+}
+
+
 resource "aws_eip" "nat" {
-  vpc  = true
   tags = local.tags
 }
 
 resource "aws_nat_gateway" "private" {
-  subnet_id     = aws_subnet.public_subnet.id
+  subnet_id     = aws_subnet.public_subnet_a.id
   allocation_id = aws_eip.nat.id
   tags          = local.tags
 }
@@ -72,7 +72,7 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public_subnet" {
-  subnet_id      = aws_subnet.public_subnet.id
+  subnet_id      = aws_subnet.public_subnet_a.id
   route_table_id = aws_route_table.public.id
 }
 
