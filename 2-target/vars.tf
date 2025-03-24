@@ -1,19 +1,7 @@
-variable "ami" {
-  default = ""
-}
-
-variable "subnet_id" {
-  default = ""
-}
-
 variable "key_name" {
-  default = ""
+  default = "my-key"
 }
 
 variable "tag" {
-  default = ""
-}
-
-variable "vpc_security_group" {
   default = ""
 }
